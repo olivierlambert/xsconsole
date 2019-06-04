@@ -34,7 +34,7 @@ class CursesPalette:
         curses.init_pair(thisIndex, inForeground, inBackground)
         cls.pairIndex += 1
         return curses.color_pair(thisIndex)
-    
+
     @classmethod
     def DefineColours(cls):
         cls.pairIndex = 1
@@ -44,7 +44,7 @@ class CursesPalette:
             # Define colours on colour-changing terminals - these are terminals with the ccc
             # flag in their capabilities in terminfo
             prefix = ''
-                
+
             # Some terminals advertise that they can change colours but don't,
             # so the following keeps things at least legible in that case
             fgBright = curses.COLOR_WHITE
@@ -53,21 +53,20 @@ class CursesPalette:
             bgBright = curses.COLOR_MAGENTA
             bgNormal = curses.COLOR_BLUE
             bgDark = curses.COLOR_BLACK
-            
+
             curses.init_color(fgBright, *config.Colour(prefix+'fg_bright'))
-            curses.init_color(fgNormal, *config.Colour(prefix+'fg_normal'))
             curses.init_color(fgDark, *config.Colour(prefix+'fg_dark'))
-            curses.init_color(bgBright, *config.Colour(prefix+'bg_bright'))
-            curses.init_color(bgNormal, *config.Colour(prefix+'bg_normal'))
-            curses.init_color(bgDark, *config.Colour(prefix+'bg_dark'))
-            
+            curses.init_color(fgNormal, 800,345,298)
+            curses.init_color(bgBright, 149,216,251)
+            curses.init_color(bgNormal, 149,216,251)
+            curses.init_color(bgDark, 89,156,191)
+
         else:
             # Set sensible defaults for non-colour-changing terminals
             fgBright = curses.COLOR_WHITE
             fgNormal = curses.COLOR_WHITE
             fgDark = curses.COLOR_WHITE
             bgDark = curses.COLOR_BLACK # Ensure bgDark != bgBright for MODAL_HIGHLIGHT colour
-            
             bgNormal = curses.COLOR_RED
             bgBright = curses.COLOR_RED
 
